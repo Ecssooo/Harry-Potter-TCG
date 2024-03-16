@@ -94,12 +94,27 @@ async function displayCharactersFilter() {
         </a>`;
     });
   }
+  if (other.checked) {
+    data.forEach((character) => {
+      if (character.house === "")
+        document.querySelector("#characters_list").innerHTML += `
+            <a href="../character/index.html?slug=${character.slug}">
+              <div class="character">
+                <img class ="character_img" src="${character.image}" alt="${character.name}">
+                <div class="character_info">
+                  <h2>${character.name}</h2>
+                </div>
+              </div>
+          </a>`;
+    });
+  }
   // Si aucune checkbox n'est cochée, affiche tous les personnages
   if (
     !gryffindor.checked &&
     !slytherin.checked &&
     !ravenclaw.checked &&
-    !hufflepuff.checked
+    !hufflepuff.checked &&
+    !other.checked
   ) {
     displayCharacters();
   }
